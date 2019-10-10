@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/10 | Hexo</title>
+  <title>FeiGe系统分析 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/10/index.html">
+  <meta name="description" content="总分为三个包：bean  service   util一、bean 包     1.用于存储各个类，类中包含其属性 构造方法      2.包内存储了六个类：         Courier 快递员类         Customer 用户类         Goods 商品类         Order 订单类         Person          ReceiveAddress 地址类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FeiGe系统分析">
+<meta property="og:url" content="http://yoursite.com/2019/10/10/FeiGe系统分析/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="总分为三个包：bean  service   util一、bean 包     1.用于存储各个类，类中包含其属性 构造方法      2.包内存储了六个类：         Courier 快递员类         Customer 用户类         Goods 商品类         Order 订单类         Person          ReceiveAddress 地址类">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-10T14:41:35.190Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="FeiGe系统分析">
+<meta name="twitter:description" content="总分为三个包：bean  service   util一、bean 包     1.用于存储各个类，类中包含其属性 构造方法      2.包内存储了六个类：         Courier 快递员类         Customer 用户类         Goods 商品类         Order 订单类         Person          ReceiveAddress 地址类">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,76 +154,211 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-FeiGe系统分析" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      FeiGe系统分析
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/10/FeiGe系统分析/" class="archive-article-date">
+
+        
+        <a href="/2019/10/10/FeiGe系统分析/" class="archive-article-date">
   	<time datetime="2019-10-10T14:39:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-10</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/10/FeiGe系统分析/">FeiGe系统分析</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="总分为三个包：bean-service-util"><a href="#总分为三个包：bean-service-util" class="headerlink" title="总分为三个包：bean  service   util"></a>总分为三个包：bean  service   util</h1><pre><code>一、bean 包
+    1.用于存储各个类，类中包含其属性 构造方法
 
-        <div class="article-info info-on-right">
-          
-          
+    2.包内存储了六个类：
+        Courier 快递员类
+        Customer 用户类
+        Goods 商品类
+        Order 订单类
+        Person 
+        ReceiveAddress 地址类
 
+    3.关于Serializable接口
+        ①在要序列化的时候必须要实现Serializable接口
+        ②而序列化就是为了保存在内存中的各种对象的状态（也就是实例变量，不是方法），并且可以把保存的对象状态再读出来。
+        ③序列化的目的： 使java对象持久化，即延长其生命周期，因为java对象的生命周期依赖于JVM,一般情况下只有当JVM运行时，java对象才会存在
+        ④对象序列化保存的是对象的&quot;状态&quot;，即它的成员变量。对象序列化不会关注类中的静态变量。
+
+二、service 包
+    1.包内包含三个类
+        LoginServie 登录管理
+        OrderService 订单管理
+        ReceiveAddressServie 地址管理
+    2. LoginServie 登录管理
+        ① Static代码块：用于初始化信息：创建用户，快递员
+        ② welcome()方法：用于显示开始页面
+        ③ validate()方法：用于进行登录验证
+        ④ login()方法：在登录错误次数超过3次后，提示并退出系统
+        ⑤ subMenu()方法：分角色（用户和快递员）显示登陆后的欢迎界面，并处理对应的操作
+    3. OrderService 订单管理
+        ① orderManage()方法：显示订单管理主界面
+        ② listOrder()方法： 展示用户对象的订单信息
+        ③ subOrder()方法：提交订单
+        ④ addOrder()方法：添加订单信息，以及商品信息
+
+    4. ReceiveAddressServie 地址管理
+        ① addressManage()方法：显示地址管理主界面
+        ② modAddress()方法：修改收货地址
+        ③ addReceiveAddress()方法：添加收货地址
+三、util 包
+    1.分为三个类
+        ① AddrSaveUtil类
+        ② FileData类
+        ③ NumberUtil类
+
+    2. AddrSaveUtil类
+        ①因为要存储多个人的收货地址，防止互相覆盖，内部定义了嵌套的HashMap
+        ②以及保存订单使用的双列集合HashMap，单列集合ArrayList
+
+    3. FileData类
+        ① writeData()方法：把用户的地址对象存到文件中
+        ② readData()方法：获取对应用户的地址对象数据
+        ③ writeOrderData()方法：存储订单对象到文件
+        ④ readOrderData()方法：获取对应用户的订单信息
+
+    4. NumberUtil类
+        ① getSerialNumber()方法：生成收货地址编号 
+        ② getOrderIdByTime()方法：生成订单编号</code></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/10/FeiGe系统分析/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/10/hello-world/" class="archive-article-date">
-  	<time datetime="2019-10-10T13:27:55.426Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-10</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/10/10/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/10/hello-world/">Hello World</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -242,8 +381,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
